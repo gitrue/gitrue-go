@@ -7,9 +7,14 @@ import (
 type MainController struct {
 	beego.Controller
 }
-
+type Result struct {
+	Code int `json:"code"` // 指定 json 小写 key
+	Desc string `json:"desc"`
+	Detail interface{} `json:"detail"`
+}
 func (c *MainController) Get() {
-	c.Data["Website"] = "beego.me"
-	c.Data["Email"] = "astaxie@gmail.com"
-	c.TplName = "index.tpl"
+	// test json
+	data := &Result{200, "获取成功","Hello world "}
+	c.Data["json"] = data
+	c.ServeJSON()
 }
