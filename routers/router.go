@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"gitrue-go/controllers"
+	"gitrue/controllers"
 	"github.com/astaxie/beego"
 )
 

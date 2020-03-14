@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql" // import your used driver
-	"gitrue-go/models"
-	_ "gitrue-go/models"
+	"gitrue/models"
+	_ "gitrue/models"
 	"time"
 )
 
