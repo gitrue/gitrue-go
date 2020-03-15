@@ -1,11 +1,21 @@
 package routers
 
 import (
-	"gitrue/controllers"
+	"gitrue-go/controllers"
 	"github.com/astaxie/beego"
 )
 
 func init() {
-    beego.Router("/", &controllers.MainController{})
 
+	beego.Router("/", &controllers.MainController{})
+	ns := beego.NewNamespace("/api",
+		beego.NSNamespace("/setting",
+			beego.NSInclude(
+				&controllers.SettingController{},
+			),
+		),
+
+	)
+	beego.AddNamespace(ns)
+	//beego.Include(&controllers.SettingController{})
 }

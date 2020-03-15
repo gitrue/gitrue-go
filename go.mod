@@ -1,4 +1,4 @@
-module gitrue
+module gitrue-go
 
 go 1.13
 

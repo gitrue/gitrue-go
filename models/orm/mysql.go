@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql" // import your used driver
-	"gitrue/models"
-	_ "gitrue/models"
+	"gitrue-go/models"
+	_ "gitrue-go/models"
 	"time"
 )
 
@@ -22,7 +22,7 @@ func init() {
 	// 设置为 UTC 时间
 	orm.DefaultTimeLoc = time.UTC
 	// register model
-	orm.RegisterModel(new(models.User),new(models.UserAction),new(models.Card))
+	orm.RegisterModel(new(models.User),new(models.UserAction),new(models.Card),new(models.Setting))
 	//使用表名前缀
 	//orm.RegisterModelWithPrefix("gitrue_", new(User))
 	// create table

@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/astaxie/beego"
-	_ "gitrue/models/orm"
-	_ "gitrue/routers"
+	_ "gitrue-go/models/orm"
+	_ "gitrue-go/routers"
 )
 
 func main() {
