@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/astaxie/beego/orm"
 	"time"
 )
 
@@ -37,6 +38,11 @@ type UserAction struct {
 	User *User `orm:"rel(one)"` // OneToOne relation 自定建立 $table_id
 }
 
+
+
+func init() {
+	orm.RegisterModel(new(UserAction),new(User))
+}
 
 
 //todo userInfo

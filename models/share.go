@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/astaxie/beego/orm"
 	"time"
 )
 
@@ -14,3 +15,9 @@ type Share struct {
 	Created time.Time `orm:"auto_now_add;type(datetime)"`
 }
 
+
+
+
+func init() {
+	orm.RegisterModel(new(Share))
+}
