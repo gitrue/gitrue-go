@@ -1,8 +1,8 @@
 package routers
 
 import (
-	"gitrue-go/controllers"
 	"github.com/astaxie/beego"
+	"gitrue-go/controllers"
 )
 
 func init() {
@@ -12,6 +12,21 @@ func init() {
 		beego.NSNamespace("/setting",
 			beego.NSInclude(
 				&controllers.SettingController{},
+			),
+		),
+		beego.NSNamespace("/comment",
+			beego.NSInclude(
+				&controllers.CommentController{},
+			),
+		),
+		beego.NSNamespace("/card",
+			beego.NSInclude(
+				&controllers.CardController{},
+			),
+		),
+		beego.NSNamespace("/article",
+			beego.NSInclude(
+				&controllers.ArticleController{},
 			),
 		),
 

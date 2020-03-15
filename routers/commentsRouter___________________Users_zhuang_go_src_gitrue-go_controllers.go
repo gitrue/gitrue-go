@@ -10,7 +10,7 @@ func init() {
     beego.GlobalControllerRouter["gitrue-go/controllers:ArticleController"] = append(beego.GlobalControllerRouter["gitrue-go/controllers:ArticleController"],
         beego.ControllerComments{
             Method: "GetArticle",
-            Router: `/get/:type`,
+            Router: `/get/:id`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,

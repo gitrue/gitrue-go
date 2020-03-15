@@ -11,11 +11,11 @@ type ArticleController struct {
 }
 
 // curl localhost:9999/api/setting/get/homeTags
-// @router /get/:type [get]
+// @router /get/:id [get]
 func (c *ArticleController) GetArticle() {
-	//typeName := c.Ctx.Input.Param(":type")
-	//c.Data["json"] = models.a(typeName)
-	//c.ServeJSON()
+	//id ,_:= c.GetInt(":id")
+	c.Data["json"] = models.GetArticle(1)
+	c.ServeJSON()
 }
 
 // @router /insert [post]
