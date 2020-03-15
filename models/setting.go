@@ -9,15 +9,36 @@ import (
 
 
 
-//好战分享表
+//分享表
 type Setting struct {
 	Id   int64 `json:"id"`
 	Type string `orm:"size(10)" json:"type"`
 	Value string `orm:"size(500)" json:"value"`
-	Des string `orm:"size(200)" json:"des"` // 0 -> girl  1 -> boy
+	Des string `orm:"size(200);null" json:"des"` // 0 -> girl  1 -> boy
 	Order int `orm:"size(5)"  json:"order"` // 0 -> girl  1 -> boy
 	//Tag string
 	Created time.Time `orm:"auto_now_add;type(datetime)" json:"create"`
+}
+
+
+
+func GetSetting(typeName string) []*Setting {
+	o := orm.NewOrm()
+	o.Using("default")
+	var settings Settings
+	_,err := o.QueryTable(new(Setting)).Filter("type", typeName).All(&settings)
+	sort.Sort(SortByOrder{settings})
+	fmt.Printf("ERR: %v\n", err)
+	return settings
+}
+
+
+func AddSetting(setting *Setting) Setting {
+	o := orm.NewOrm()
+	o.Using("default")
+	o.Insert(setting)//插入数据库
+
+	return *setting
 }
 
 type Settings []*Setting
@@ -40,15 +61,7 @@ func (p SortByOrder) Less(i, j int) bool {
 
 
 
-func GetSetting(typeName string) []*Setting {
-	o := orm.NewOrm()
-	var settings Settings
-	_,err := o.QueryTable(new(Setting)).Filter("type", typeName).All(&settings)
-	sort.Sort(SortByOrder{settings})
-	fmt.Printf("ERR: %v\n", err)
-	return settings
-}
-
 func init() {
 	orm.RegisterModel(new(Setting))
 }
+

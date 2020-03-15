@@ -22,7 +22,7 @@ func init() {
 	// 设置为 UTC 时间
 	orm.DefaultTimeLoc = time.UTC
 	// register model
-	orm.RegisterModel(new(models.User),new(models.UserAction),new(models.Card))
+	//orm.RegisterModel(new(models.User),new(models.UserAction),new(models.Card))
 	//使用表名前缀
 	//orm.RegisterModelWithPrefix("gitrue_", new(User))
 	// create table

@@ -8,8 +8,8 @@ import (
 //用户基本 model
 type User struct {
 	Id   int
-	NickName string `orm:"size(10)"`
-	UserName string `orm:"size(50)"`
+	NickName string `orm:"size(30)"`
+	UserName string `orm:"size(30)"`
 	Sex int // 0 -> girl  1 -> boy
 	Tag string
 	Empiric int //经验
@@ -24,7 +24,9 @@ type User struct {
 	Created time.Time `orm:"auto_now_add;type(datetime)"`
 	LastLogin time.Time `orm:"auto_now_add;type(datetime)"`
 	UserAction *UserAction `orm:"reverse(one)"` // 反向关联 mysql不建立字段 model 保留 struct
-	Card []*Card `orm:"reverse(many);null"` // 设置一对多的反向关系
+	Card []*Card `orm:"reverse(many);null" json:"cards"` // 设置一对多的反向关系
+	Article []*Article `orm:"reverse(many);null" json:"articles"` // 设置一对多的反向关系
+	Comment []*Comment `orm:"reverse(many);null" json:"comments"` // 设置一对多的反向关系
 }
 
 //用户行为 model
